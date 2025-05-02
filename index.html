@@ -119,7 +119,14 @@
         const weight = (i % 2 === 0) ? 3 : 1;
         sum += digit * weight;
       }
-      return (10 - (sum % 10)) % 10;
+      let checkDigit = (10 - (sum % 10)) % 10;
+
+      // If even, increase by 1 to make it odd
+      if (checkDigit % 2 === 0) {
+        checkDigit = (checkDigit + 1) % 10;
+      }
+
+      return checkDigit;
     }
 
     function generateBarcode() {
